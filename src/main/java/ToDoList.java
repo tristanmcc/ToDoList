@@ -50,6 +50,8 @@ public class ToDoList {
         System.out.println("4) Remove a Task");
         System.out.println("5) Save and Quit");
      System.out.println();
+
+
     }
     
     /*
@@ -94,7 +96,7 @@ public class ToDoList {
     public static void main(String[] args) {
 
          java.util.Scanner input = new java.util.Scanner(System.in);
-        ArrayList<Task> simpleToDoList = new ArrayList<>();
+        ArrayList<Task> simpleToDoList = new ArrayList<Task>();
 
         int choice = 1;
         while (choice != 0) {
@@ -134,7 +136,7 @@ public class ToDoList {
                        Task task1 = new Task(title,date,project,done);
                        simpleToDoList.add(task1);
 
-                    case 2:  //REMOVE LAST
+                    case 2:  //remove last in ArrayList
                         Task removed = simpleToDoList.remove(simpleToDoList.indexOf(choice));
                         if (removed != null) {
                             System.out.println("Removed: " + removed);
@@ -143,7 +145,7 @@ public class ToDoList {
                         }
                         break;
 
-                    case 3:  //REMOVE AT
+                    case 3:  //remove
                         System.out.print("Enter the index of the item to remove: ");
                         int index = input.nextInt();
                         removed = simpleToDoList.remove(index);
