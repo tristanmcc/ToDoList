@@ -54,18 +54,11 @@ public class ToDoList {
      * Returns the removed task, or it will return null if the given index did not correspond
      * to a task in the AL.
      */
-    public Task remove(int index)
+    public void remove(int index)
     {
-        if (index < 1 || index > this.count)
-        {
-            return null;  //no such element
-        }
-        else {
-            index--; //convert to 0-based indexing used by arraylist
-            Task deleted = arrayListToDoList.remove(index);
-            this.count--;  //removed an element
-            return deleted;
-        }
+            arrayListToDoList.remove(index);
+            count--;
+
     }
 
     public void displayToDoList()

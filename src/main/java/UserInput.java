@@ -18,6 +18,8 @@ public class UserInput {
 
     private int choice;
     ToDoList simpleTodoList;
+    private int statusOpen = 0;
+    private int statusClosed = 0;
     private String userStringDate;
     private ArrayList<Task> usersToDoList = new ArrayList<>();
     DateFormat formatterAdd = new SimpleDateFormat("yyyy-MM-dd");//date formatter for Add method
@@ -42,7 +44,7 @@ public class UserInput {
             System.out.println();
             System.out.println("This is ToDoLy");
             System.out.println("your favourite To-do list application");
-            System.out.println("You have x tasks to do and y tasks are done");
+            System.out.println("You have " + statusOpen + " tasks to do and " + statusClosed + " tasks are done");
             System.out.println("pick an option: ");
             System.out.println("1) Add a Task");
             System.out.println("2) Edit a Task");
@@ -62,6 +64,7 @@ public class UserInput {
             switch (choice) {
                 case 1:  //ADD a Task to ArrayList
                     add();
+                    statusOpen++;
                     break;
 
                 case 2:  //remove last in ArrayList
@@ -101,7 +104,8 @@ public class UserInput {
     }
 
     /**
-     * This method reads the input FileReader
+     * This method will be used instead of repeated scanner.nextLine(); so it
+     * reads the input FileReader
      */
     public String scanString() {
         Scanner sc = new Scanner(System.in);
@@ -199,8 +203,10 @@ public class UserInput {
             System.out.println("Enter the Task no. you want  to delete ");
             taskNum = scanInput();
             taskNum = taskNum - 1;
-            System.out.println("Enter the option");
-            removeChoice = scanInput();
+            Task taskForRemoving = simpleTodoList.getTask(taskNum);
+            simpleTodoList.remove(taskNum);
+
+
         }
     }
 
