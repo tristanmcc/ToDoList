@@ -9,7 +9,7 @@ import java.util.*;
  * A 'Task' stores its name, date of expected completion, its status
  * and the project this task belongs to;
  *
- * @Tristan McCarthy
+ * @Tristan_McCarthy
  */
 
 

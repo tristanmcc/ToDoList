@@ -3,8 +3,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 /**
- * This class is part of the ToDoly to-do list application.
- * ToDoly is a very simple to-do list application.
+ * This class is part of the ToDo-ly to-do list application.
+ * ToDo-ly is a very simple to-do list application.
  *
  * The UserInput class handles the users inputting of information regarding
  * Tasks to be added to the actual todo List
@@ -16,25 +16,16 @@ import java.util.*;
 
 public class UserInput {
 
-    private int choice;
-    ToDoList simpleTodoList;
+    ToDoList simpleTodoList = new ToDoList();
     private String userStringDate;
-    private ArrayList<Task> usersToDoList = new ArrayList<>();
-    DateFormat formatterAdd = new SimpleDateFormat("yyyy-MM-dd");//date formatter for Add method
-    DateFormat formatterEdit = new SimpleDateFormat("yyyy-MM-dd");//date formatter for Edit method
-
 
     public UserInput() {
-
-        int choice = 0;
-        simpleTodoList = new ToDoList();
 
 
     }
 
     public void displayMenu() throws ParseException {
         int choice = 1;
-        ToDoList simpleToDoList = new ToDoList();
         java.util.Scanner input = new java.util.Scanner(System.in);
         while (choice != 0) {
 
@@ -92,22 +83,14 @@ public class UserInput {
 
     /**
      * This method scans the users choice of action by determining the number they input
+     *
      * @return num of action chosen by user
      */
     public int scanInput() {
         Scanner sc = new Scanner(System.in);
-        int numInput = sc.nextInt();
-        return numInput;
+        return sc.nextInt();
     }
 
-    /**
-     * This method reads the input FileReader
-     */
-    public String scanString() {
-        Scanner sc = new Scanner(System.in);
-        String line = sc.nextLine();
-        return line;
-    }
     /**
      * This method adds a Task to the ToDoList variable by calling the addTask method
      * in the ToDoList class and adding the task information input by the user
@@ -125,22 +108,22 @@ public class UserInput {
         System.out.println("Enter task Status: ");
         String status = scanning.nextLine();
         Date date = formatterAdd.parse(userStringDate);
-        Task task1 = new Task(title,project, date, status);
-        simpleTodoList.addTask(title,project,date,status);
+        new Task(title, project, date, status);
+        simpleTodoList.addTask(title, project, date, status);
 
     }
-
 
 
     /**
      * This method allows users to edit tasks that have already been added to the working ToDo List
      * the method calls the displayToDoList() method so that the user can the task number for the task
      * they want to edit.
-     * @throws ParseException
+     *
+     * @throws ParseException e
      */
-    public void editTask() throws ParseException {
-        int taskNum = 0; //functions as index of tasks in simpletodolist
-        int editFieldChoice = 0; //functions as index of options for fields to edit
+    private void editTask() throws ParseException {
+        int taskNum = 0; //functions as index of tasks in simple ToDo list
+        int editFieldChoice; //functions as index of options for fields to edit
         Task taskForEdit = this.simpleTodoList.getTask(taskNum); //task in 'todolist' accessed via get method based on task number chosen by user
         DateFormat formatterEdit = new SimpleDateFormat("yyyy-MM-dd"); //date formatter
 
@@ -148,8 +131,7 @@ public class UserInput {
         simpleTodoList.displayToDoList();
         Scanner scanning = new Scanner(System.in);
         System.out.println("Enter the Task No you want  to Edit");
-        taskNum = scanInput();
-        taskNum = taskNum - 1;
+        scanInput();
 
         System.out.println("Enter the field you want to Edit");
         System.out.println("1.Task Name  ");
@@ -158,49 +140,46 @@ public class UserInput {
         System.out.println("4.Date");
         editFieldChoice = scanInput();
 
-        switch (editFieldChoice){
+        switch (editFieldChoice) {
             case 1: //Change the task title
 
-            System.out.println("Set task title to : " );
-            String newTitle = scanning.nextLine();
-            taskForEdit.setTaskTitle(newTitle);
-            break;
+                System.out.println("Set task title to : ");
+                String newTitle = scanning.nextLine();
+                taskForEdit.setTaskTitle(newTitle);
+                break;
 
             case 2: //Change the tasks 'Project' assignment
 
-            System.out.println("Edit the Project Name : ");
-            String newProjectName = scanning.nextLine();
-            taskForEdit.setProjectName(newProjectName);
-            break;
+                System.out.println("Edit the Project Name : ");
+                String newProjectName = scanning.nextLine();
+                taskForEdit.setProjectName(newProjectName);
+                break;
 
             case 3: //Change the tasks 'Status' assignment
 
-            System.out.println("Edit the status : ");
-            String newStatus = scanning.nextLine();
-            taskForEdit.setTaskStatusDone(newStatus);
-            break;
+                System.out.println("Edit the status : ");
+                String newStatus = scanning.nextLine();
+                taskForEdit.setTaskStatusDone(newStatus);
+                break;
 
             case 4: //Change the tasks 'Date' assignment
 
-            System.out.println("Edit the TaskDate(yyyy-MM-dd) : ");
-            userStringDate = scanning.nextLine();
+                System.out.println("Edit the TaskDate(yyyy-MM-dd) : ");
+                userStringDate = scanning.nextLine();
                 Date newDate = formatterEdit.parse(userStringDate);
                 taskForEdit.setTaskDate(newDate);
-            break;
+                break;
         }
     }
 
 
     public void removeAnyTask() {
         {
-            int taskNum = 0;
-            int removeChoice = 0;
             simpleTodoList.displayToDoList();
             System.out.println("Enter the Task no. you want  to delete ");
-            taskNum = scanInput();
-            taskNum = taskNum - 1;
+            scanInput();
             System.out.println("Enter the option");
-            removeChoice = scanInput();
+            scanInput();
         }
     }
 
