@@ -18,17 +18,10 @@ public class UserInput {
 
     private int choice;
     ToDoList simpleTodoList;
-    private String userInput1;
-    private String userInput2;
-    private String userInput3;
     private String userStringDate;
-    private String userInput4;
-    private int setField;
-    private int statusOpen = 0;
-    private int statusClosed = 0;
     private ArrayList<Task> usersToDoList = new ArrayList<>();
-    DateFormat formatterAdd = new SimpleDateFormat("yyyy-MM-dd");
-    DateFormat formatterEdit = new SimpleDateFormat("yyyy-MM-dd");
+    DateFormat formatterAdd = new SimpleDateFormat("yyyy-MM-dd");//date formatter for Add method
+    DateFormat formatterEdit = new SimpleDateFormat("yyyy-MM-dd");//date formatter for Edit method
 
 
     public UserInput() {
@@ -121,7 +114,7 @@ public class UserInput {
      */
     public void add() throws ParseException {
 
-        DateFormat formatterAdd = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat formatterAdd = new SimpleDateFormat("yyyy-MM-dd");//date formatter
         Scanner scanning = new Scanner(System.in);
         System.out.println("Enter title: ");
         String title = scanning.nextLine();
@@ -146,8 +139,12 @@ public class UserInput {
      * @throws ParseException
      */
     public void editTask() throws ParseException {
-        int taskNum = 0;
-        int editChoice = 0;
+        int taskNum = 0; //functions as index of tasks in simpletodolist
+        int editFieldChoice = 0; //functions as index of options for fields to edit
+        Task taskForEdit = this.simpleTodoList.getTask(taskNum); //task in 'todolist' accessed via get method based on task number chosen by user
+        DateFormat formatterEdit = new SimpleDateFormat("yyyy-MM-dd"); //date formatter
+
+
         simpleTodoList.displayToDoList();
         Scanner scanning = new Scanner(System.in);
         System.out.println("Enter the Task No you want  to Edit");
@@ -159,45 +156,37 @@ public class UserInput {
         System.out.println("2.Project Name ");
         System.out.println("3.Status ");
         System.out.println("4.Date");
-        editChoice = scanInput();
+        editFieldChoice = scanInput();
 
-
-        switch (editChoice){
+        switch (editFieldChoice){
             case 1: //Change the task title
 
             System.out.println("Set task title to : " );
-            userInput1 = scanning.nextLine();
-            setField = 1;
-            System.out.println("Enter the option");
-            choice = scanInput();
-
-
+            String newTitle = scanning.nextLine();
+            taskForEdit.setTaskTitle(newTitle);
+            break;
 
             case 2: //Change the tasks 'Project' assignment
 
             System.out.println("Edit the Project Name : ");
-            userInput2 = scanning.nextLine();
-            setField = 2;
-            System.out.println("Enter the option");
-            editChoice = scanInput();
-
+            String newProjectName = scanning.nextLine();
+            taskForEdit.setProjectName(newProjectName);
+            break;
 
             case 3: //Change the tasks 'Status' assignment
 
             System.out.println("Edit the status : ");
-            userInput3 = scanning.nextLine();
-            setField = 3;
-            System.out.println("Enter the option");
-            editChoice = scanInput();
+            String newStatus = scanning.nextLine();
+            taskForEdit.setTaskStatusDone(newStatus);
+            break;
 
             case 4: //Change the tasks 'Date' assignment
-                 DateFormat formatterEdit = new SimpleDateFormat("yyyy-MM-dd");
+
             System.out.println("Edit the TaskDate(yyyy-MM-dd) : ");
             userStringDate = scanning.nextLine();
-            setField = 4;
-            System.out.println("Enter the option");
-            editChoice = scanInput();
-            Date newDate = formatterEdit.parse(userStringDate);
+                Date newDate = formatterEdit.parse(userStringDate);
+                taskForEdit.setTaskDate(newDate);
+            break;
         }
     }
 

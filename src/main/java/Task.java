@@ -65,8 +65,8 @@ public class Task {
     /*
      * @set the task status to done
      */
-    public void setTaskStatusDone() {
-        status = "Done";
+    public void setTaskStatusDone(String newStatus) {
+        status = newStatus;
     }
 
     /*

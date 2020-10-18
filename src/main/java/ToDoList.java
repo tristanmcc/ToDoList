@@ -114,6 +114,10 @@ public class ToDoList {
         return numInput;
     }
 
+    public Task getTask(int index) {
+        return this.arrayListToDoList.get(index);
+    }
+
 
 
     public static void main(String[] args) {
