@@ -1,3 +1,8 @@
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.ArrayList;
 /**
@@ -14,56 +19,29 @@ import java.util.ArrayList;
 public class ToDoList {
 
     //instance variables
-    private ArrayList<Task> toDoList; //storage of tasks
+    private ArrayList<Task> arrayListToDoList; //storage of tasks
     private int count; //how many tasks have been added to todo
-    private int taskNum;
+    private int statusOpen = 0;
+    private int statusClosed = 0;
     
-    /*
-     *  This ia the constructor which builds a ToDoList.
+    /**
+     *  This is the constructor which builds a ToDoList.
      */
     public ToDoList() {
-        toDoList = new ArrayList<>();
+        arrayListToDoList = new ArrayList<Task>();
         count = 0;
     }
     
-    /*
-     * Will refactor to use this as the application launch method 
+    /**
+     * Adds the task to this ToDoList.
+     * @param title, project, date, status
      */
-    public void start()
-    {
-      printWelcome();
-    }
-    
-    /*
-     * Will refactor to use this in coming days
-     */
-    public void printWelcome()
-    {
-     System.out.println();
-        System.out.println("This is ToDoLy");
-        System.out.println("your favourite To-do list application");
-        System.out.println("You have x tasks to do and y tasks are done");
-        System.out.println("pick an option: ");
-        System.out.println("1) Add a Task");
-        System.out.println("2) Edit a Task");
-        System.out.println("3) Show Task List");
-        System.out.println("4) Remove a Task");
-        System.out.println("5) Save and Quit");
-     System.out.println();
-
-
-    }
-    
-    /*
-     * Adds the task to this ToDoList.  
-     */
-    public void add(Task task) 
-    {
-            this.toDoList.add(task);
+    public void addTask(String title, String project, Date date, String status) throws ParseException {
+          arrayListToDoList.add(new Task(title,project, date, status ));
             count++;
     }
 
-    /*
+    /**
      * @return number of tasks are stored in toDoList.
      */
     public int getSize() 
@@ -71,7 +49,7 @@ public class ToDoList {
         return count;
     }
 
-    /*
+    /**
      * Removes task at the given index-1 in this Arraylist.
      * Returns the removed task, or it will return null if the given index did not correspond
      * to a task in the AL.
@@ -84,93 +62,63 @@ public class ToDoList {
         }
         else {
             index--; //convert to 0-based indexing used by arraylist
-            Task deleted = toDoList.remove(index);
+            Task deleted = arrayListToDoList.remove(index);
             this.count--;  //removed an element
             return deleted;
         }
     }
 
-    /*
-     * Currently serving as menu based interface
-     */
+    public void displayToDoList()
+    {
+        int taskNo = 0;
+        int displayChoice = 0;
+        int count = 0;
+        DateFormat formatterAdd = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println("Please Enter your choice - for sorting");
+        System.out.println("1.Sort based on Date");
+        System.out.println("2.Sort based on Project");
+        displayChoice = scanInput();
+
+        switch(displayChoice){
+            case 1:
+                arrayListToDoList.sort(Comparator.comparing(Task::getTaskDate));
+                break;
+            case 2:
+                arrayListToDoList.sort(Comparator.comparing(Task::getProject));
+                break;
+        }
+        String format1 = "%-9s%-40s %-43s %-12s %-15s";
+        System.out.printf((format1) + "%n", "Task No", "Task Name", "ProjectName", "Status", " Date");
+
+
+
+        for (Task task : arrayListToDoList) {
+            count++;
+            System.out.println(String.format(format1, count, task.getTitle(), task.getProject(), task.getStatus(), formatterAdd.format(task.getTaskDate())));
+            String changeCase = task.getStatus().toUpperCase();
+
+
+            if (changeCase.equals("OPEN")) {
+                statusOpen = statusOpen + 1;
+            } else if (changeCase.equals("DONE")) {
+                statusClosed = statusClosed + 1;
+            }
+        }
+        System.out.println("Number of Tasks open : " + statusOpen + " Number of Tasks Closed " + statusClosed);
+        statusOpen = 0;
+        statusClosed = 0;
+    }
+    public int scanInput() {
+        Scanner sc = new Scanner(System.in);
+        int numInput = sc.nextInt();
+        return numInput;
+    }
+
+
+
     public static void main(String[] args) {
 
-         java.util.Scanner input = new java.util.Scanner(System.in);
-        ArrayList<Task> simpleToDoList = new ArrayList<Task>();
 
-        int choice = 1;
-        while (choice != 0) {
-            //print list
-            System.out.println();
-            System.out.println(simpleToDoList);  //calls toString()
-            
-            
-            //print start menu
-          System.out.println();
-            System.out.println("This is ToDoLy");
-            System.out.println("your favourite To-do list application");
-            System.out.println("You have x tasks to do and y tasks are done");
-            System.out.println("pick an option: ");
-            System.out.println("1) Add a Task");
-            System.out.println("2) Edit a Task");
-            System.out.println("3) Show Task List");
-            System.out.println("4) Remove a Task");
-            System.out.println("5) Save and Quit");
-          System.out.println();
-      
-            //Scan user's input
-            try {
-                choice = input.nextInt();
-                input.nextLine();  //clear input stream
-                switch (choice) {
-                    case 1:  //ADD a Task to ArrayList
-                       Scanner scanning = new Scanner(System.in);
-                       System.out.println("Enter title: ");
-                       String title = scanning.nextLine();
-                       System.out.println("Enter project: ");
-                       String project = scanning.nextLine();
-                       System.out.println("Enter due date (format: yyyy-mm-dd): ");
-                       String date = scanning.nextLine();
-                       System.out.println("Enter task Status: ");
-                       String done = scanning.nextLine();
-                       Task task1 = new Task(title,date,project,done);
-                       simpleToDoList.add(task1);
-
-                    case 2:  //remove last in ArrayList
-                        Task removed = simpleToDoList.remove(simpleToDoList.indexOf(choice));
-                        if (removed != null) {
-                            System.out.println("Removed: " + removed);
-                        }else {
-                            System.out.println("Nothing there to remove, sorry mate! ");
-                        }
-                        break;
-
-                    case 3:  //remove
-                        System.out.print("Enter the index of the item to remove: ");
-                        int index = input.nextInt();
-                        removed = simpleToDoList.remove(index);
-                        if (removed != null) {
-                            System.out.println("Removed: " + removed);
-                        }else {
-                            System.out.println("There is no item to be removed at index " +
-                                    index + ".");
-                        }
-                        break;
-
-                    case 0:
-                        System.out.println("Goodbye!");
-                        break;
-
-                    default:
-                        System.out.println("Sorry, but " + choice + " is not one of " +
-                                "the menu choices. Please try again.");
-                        break;
-                }
-            }catch (java.util.InputMismatchException ime) {
-                System.out.println("Sorry, but you must enter a number.");
-                input.nextLine();  //make sure they enter a number not a string
-            }
         }
     }
 
-}
