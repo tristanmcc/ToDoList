@@ -1,52 +1,44 @@
-import java.text.DateFormat;
+package ToDoLy;
+
+import java.io.Serializable;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.Scanner;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Scanner;
+
 /**
  * This class is part of the ToDoly to-do list application.
  * ToDoly is a very simple to-do list application.
  * 
- * A 'ToDoList' represents the To Do list that a user populates with Tasks 
+ * A 'ToDoLy.ToDoList' represents the To Do list that a user populates with Tasks
  * New Tasks can be added at the end and removed.
- * ToDoList tasks are indexed starting at 1 (not 0).
+ * ToDoLy.ToDoList tasks are indexed starting at 1 (not 0).
  * 
- * @Tristan McCarthy
+ * @Tristan_McCarthy
  */
 
-public class ToDoList {
+public class ToDoList implements Serializable {
 
     //instance variables
-    private ArrayList<Task> arrayListToDoList; //storage of tasks
-    private int count; //how many tasks have been added to todo
+    private ArrayList<Task> arrayListToDoList = new ArrayList<Task>(); //storage of tasks
+    private int count = 0; //how many tasks have been added to TODO
     private int statusOpen = 0;
     private int statusClosed = 0;
     
     /**
-     *  This is the constructor which builds a ToDoList.
+     *  This is the constructor which builds a ToDoLy.ToDoList.
      */
     public ToDoList() {
-        arrayListToDoList = new ArrayList<Task>();
-        count = 0;
     }
     
     /**
-     * Adds the task to this ToDoList.
+     * Adds the task to this ToDoLy.ToDoList.
      * @param title, project, date, status
      */
-    public void addTask(String title, String project, Date date, String status) throws ParseException {
-          arrayListToDoList.add(new Task(title,project, date, status ));
+    public void addTask(String title, String project, String date, String status) {
+          arrayListToDoList.add(new Task(title,project, date, status));
             count++;
-    }
-
-    /**
-     * @return number of tasks are stored in toDoList.
-     */
-    public int getSize() 
-    {
-        return count;
     }
 
     /**
@@ -63,14 +55,12 @@ public class ToDoList {
 
     public void displayToDoList()
     {
-        int taskNo = 0;
-        int displayChoice = 0;
         int count = 0;
-        DateFormat formatterAdd = new SimpleDateFormat("yyyy-MM-dd");
+        DateTimeFormatter formatterAdd = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         System.out.println("Please Enter your choice - for sorting");
         System.out.println("1.Sort based on Date");
         System.out.println("2.Sort based on Project");
-        displayChoice = scanInput();
+        int displayChoice = scanInput();
 
         switch(displayChoice){
             case 1:
@@ -81,13 +71,13 @@ public class ToDoList {
                 break;
         }
         String format1 = "%-9s%-40s %-43s %-12s %-15s";
-        System.out.printf((format1) + "%n", "Task No", "Task Name", "ProjectName", "Status", " Date");
+        System.out.printf((format1) + "%n", "ToDoLy.Task No", "ToDoLy.Task Name", "ProjectName", "Status", " Date");
 
 
 
         for (Task task : arrayListToDoList) {
             count++;
-            System.out.println(String.format(format1, count, task.getTitle(), task.getProject(), task.getStatus(), formatterAdd.format(task.getTaskDate())));
+            System.out.printf((format1) + "%n", count, task.getTitle(), task.getProject(), task.getStatus(), formatterAdd.format(task.getTaskDate()));
             String changeCase = task.getStatus().toUpperCase();
 
 
@@ -103,15 +93,36 @@ public class ToDoList {
     }
     public int scanInput() {
         Scanner sc = new Scanner(System.in);
-        int numInput = sc.nextInt();
-        return numInput;
+        return sc.nextInt();
     }
 
     public Task getTask(int index) {
         return this.arrayListToDoList.get(index);
     }
 
+/*    public String getTasks() {
+        String list = "";
+        for (int i = 0; i < this.arrayListToDoList.size(); i++) {
+            Task currentTask = this.arrayListToDoList.get(i);
+            list += (i+1) + ": " + currentTask.toString() + "\n";
+        }
 
+        return list;
+    }
+   /* public String toString()
+    {
+        //return "name" + name + "birthday" + birthday + "age" + age + "type" + type ;
+        //           b      -   2000           -10-22   -    3      -   cat
+        return "" + title + "**" + project + "**" + date + "**" + status;
+
+    }
+*/
+
+    public void update(){
+        StreamManager streamManager = new StreamManager();
+        streamManager.writeAsData(arrayListToDoList);
+
+    }
 
     public static void main(String[] args) {
 

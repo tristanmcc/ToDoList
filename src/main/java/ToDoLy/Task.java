@@ -1,29 +1,37 @@
-import java.util.*;
+package ToDoLy;
+
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  * This class is part of the ToDoly to-do list application.
  * ToDoly is a very simple to-do list application.
- * <p>
- * A 'Task' represents the actual task that a user needs to
- * remember to do thus an instance of 'Task' is added to the ToDo list.
- * A 'Task' stores its name, date of expected completion, its status
+ * A 'ToDoLy.Task' represents the actual task that a user needs to
+ * remember to do thus an instance of 'ToDoLy.Task' is added to the ToDo list.
+ * A 'ToDoLy.Task' stores its name, date of expected completion, its status
  * and the project this task belongs to;
  *
- * @Tristan McCarthy
+ * @Tristan_McCarthy
  */
 
 
-public class Task {
+public class Task implements Serializable {
 
     private String title;
     private String status;
-    private Date date;
+    private LocalDate date;
     private String project;
 
-    public Task(String title,String project,Date date, String status) {
+    public Task(String title,String project,String date, String status) {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+
         this.title = title;
         this.project = project;
-        this.date = date;
+        this.date = LocalDate.parse(date, formatter);
         this.status = status;
     }
 
@@ -51,7 +59,7 @@ public class Task {
     /*
      * @return The task Date
      */
-    public Date getTaskDate() {
+    public LocalDate getTaskDate() {
         return date;
     }
 
@@ -79,7 +87,8 @@ public class Task {
     /*
      * @set the task date
      */
-    public void setTaskDate(Date setTaskDate) {
-        date = setTaskDate;
+    public void setTaskDate(String setTaskDate) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        this.date = LocalDate.parse(setTaskDate, formatter);
     }
 }
