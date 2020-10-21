@@ -1,7 +1,3 @@
----
-
-
----
 
 <h1 id="todoly---a-simple-to-do-list-application">ToDoLy - a simple to do list Application!</h1>
 <h2 id="table-of-contents">Table of Contents</h2>
@@ -49,5 +45,5 @@
 <p>I would like to thank StackOverflow, Youtube, the World of Zuul project from <em>Objects first with Java</em> and Fred.</p>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ1MDkxMjk3OV19
+eyJoaXN0b3J5IjpbLTU5NTY4Nzc5MywxNDUwOTEyOTc5XX0=
 -->
