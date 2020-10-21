@@ -4,9 +4,9 @@ ToDoLy is a simple text based to-do list application. The user is able to add, e
 
 ## UML diagrams
 
-[Use Case Diagram](https://github.com/tristanmcc/ToDoList/blob/master/Diagrams/USE_CASE_DIAGRAM_TODO-Use_Case_diagram.jpg)
-[Class Diagram](https://github.com/tristanmcc/ToDoList/blob/master/Diagrams/USE_CASE_DIAGRAM_TODO-Task%20Diagram.jpg)
-[Activity Flow Diagram](https://github.com/tristanmcc/ToDoList/blob/master/Diagrams/USE_CASE_DIAGRAM_TODO-Process%20flow%20diagram%20AUC1.jpg)
+- [Use Case Diagram](https://github.com/tristanmcc/ToDoList/blob/master/Diagrams/USE_CASE_DIAGRAM_TODO-Use_Case_diagram.jpg)
+- [Class Diagram](https://github.com/tristanmcc/ToDoList/blob/master/Diagrams/USE_CASE_DIAGRAM_TODO-Task%20Diagram.jpg)
+- [Activity Flow Diagram](https://github.com/tristanmcc/ToDoList/blob/master/Diagrams/USE_CASE_DIAGRAM_TODO-Process%20flow%20diagram%20AUC1.jpg)
 
 
 # Things I used
@@ -42,5 +42,5 @@ tristanmccarthy085@gmail.com
 I would like to thank StackOverflow, Youtube, the World of Zuul project from *Objects first with Java* and Fred.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDM1ODQ2NjhdfQ==
+eyJoaXN0b3J5IjpbLTI3NjkzNDUxOSw0MzU4NDY2OF19
 -->
