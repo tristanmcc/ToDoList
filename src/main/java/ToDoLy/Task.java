@@ -91,4 +91,14 @@ public class Task implements Serializable {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         this.date = LocalDate.parse(setTaskDate, formatter);
     }
+
+    @Override
+    public String toString() {
+        return
+                "title='" + title + '\'' +
+                ", status='" + status + '\'' +
+                ", date=" + date +
+                ", project='" + project + '\'' +
+                '}';
+    }
 }

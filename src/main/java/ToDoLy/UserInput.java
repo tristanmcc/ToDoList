@@ -19,7 +19,7 @@ import java.util.*;
  * @Tristan_McCarthy
  */
 
-public class UserInput implements Serializable {
+public class UserInput<streamManager> implements Serializable {
 
     private int choice;
     ToDoList simpleTodoList;
@@ -30,8 +30,8 @@ public class UserInput implements Serializable {
     DateFormat formatterEdit = new SimpleDateFormat("yyyy-MM-dd");//date formatter for Edit method
     private Scanner intScan = new Scanner(System.in);
     private Scanner normalScan = new Scanner(System.in);
-    private StreamManager streamManager;
     private boolean setQuit = false;
+    StreamManager streamManager;
 
 
 
@@ -39,6 +39,7 @@ public class UserInput implements Serializable {
 
         int choice = 0;
         simpleTodoList = new ToDoList();
+        StreamManager streamManager = new StreamManager();
 
 
     }
@@ -89,7 +90,7 @@ public class UserInput implements Serializable {
                     break;
 
                 case 5:
-                 simpleTodoList.update();
+                    saveExitTask();
                     System.out.println("Goodbye!");
                     setQuit = true;
                     break;
@@ -128,7 +129,7 @@ public class UserInput implements Serializable {
      * This method adds a ToDoLy.Task to the ToDoLy.ToDoList variable by calling the addTask method
      * in the ToDoLy.ToDoList class and adding the task information input by the user
      */
-    public void add() throws ParseException {
+    public void add() {
 
         DateFormat formatterAdd = new SimpleDateFormat("yyyy-MM-dd");//date formatter
         //Scanner scanning = new Scanner(System.in);
@@ -143,7 +144,6 @@ public class UserInput implements Serializable {
         simpleTodoList.addTask(title,project,date,status);
 
     }
-
 
 
     /**
@@ -222,8 +222,9 @@ public class UserInput implements Serializable {
         }
     }
 
-    private void saveExittask()
+    private void saveExitTask()
     {
+        simpleTodoList.update();
         setQuit = true;
     }
 

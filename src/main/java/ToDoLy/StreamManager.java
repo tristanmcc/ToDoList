@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
  * This class is part of the ToDoly to-do list application.
  * ToDoly is a very simple to-do list application.
  *
- * This Stream manager is in the form of C.R.U.D.
+ * This StreamManager is in the form of C.R.U.D.
  * in that it has the ability to:
  * Create a file
  * Read a file (input reader)
@@ -27,10 +27,25 @@ import java.util.regex.Pattern;
 public class StreamManager
 {
     //TODO change the path
-    private String path = "/Users/tristanmccarthy/Desktop/ToDoListMASTER/simpleToDoList.txt";
+    private String path = "/Users/tristanmccarthy/Desktop/ToDoListMASTER/";
+    public String filename = "simpleToDoList.txt";
+
+    public void createFile() {
+        try {
+            File newFile = new File(filename);
+            if (newFile.createNewFile()) {
+                System.out.println("File created: " + newFile.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
 
     //Data Stream :
-    public void writeAsData(ArrayList<Task> list)
+   /* public void writeAsData(ArrayList<Task> list)
     {
 
         try {
@@ -78,7 +93,7 @@ public class StreamManager
 
 
         return list;
-    }
+    } */
 
 
     //--------------------------
@@ -127,9 +142,6 @@ public class StreamManager
 
         return list;
     }
-
-
-
 }
 
 
