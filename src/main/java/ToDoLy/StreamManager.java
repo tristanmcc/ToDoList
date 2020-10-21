@@ -44,59 +44,6 @@ public class StreamManager
         }
     }
 
-    //Data Stream :
-   /* public void writeAsData(ArrayList<Task> list)
-    {
-
-        try {
-            FileWriter fileWriter = new FileWriter(new File(path + "simpleToDoList.txt"));
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
-            for (Task task: list)
-            {
-                bufferedWriter.write(list.toString() + "\n");
-            }
-            bufferedWriter.close();
-
-        }
-        catch (IOException e)
-        {
-            System.out.println("File doesn't found " +  e);
-        }
-
-    }
-
-    public ArrayList<Task> readAsData()
-    {
-        ArrayList<Task> list = new ArrayList<>();
-
-        try
-        {
-            FileReader fileReader = new FileReader(new File("\"/Users/tristanmccarthy/Desktop/ToDoListMASTER/"));
-            BufferedReader br = new BufferedReader(fileReader);
-
-            String line = "";
-            String[] data;
-            while ( (line = br.readLine()) != null )
-            {
-                data = line.split("\\*\\*");
-                Task task = new Task(data[0],data[1], data[2], data[3]);
-                list.add(task);
-            }
-
-            br.close();
-        }
-        catch (IOException e)
-        {
-            System.out.println("File not found " +  e);
-        }
-
-
-        return list;
-    } */
-
-
-    //--------------------------
 
     //Object Stream
     public void writeAsObject(ArrayList<Task> list)

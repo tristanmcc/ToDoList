@@ -16,7 +16,6 @@ import java.time.format.DateTimeFormatter;
  * @Tristan_McCarthy
  */
 
-
 public class Task implements Serializable {
 
     private String title;
@@ -24,73 +23,95 @@ public class Task implements Serializable {
     private LocalDate date;
     private String project;
 
-    public Task(String title,String project,String date, String status) {
+
+    /**
+     * This is the constructor which builds a ToDoLy.Task.
+     */
+    public Task(String title, String project, String date, String status) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-
         this.title = title;
         this.project = project;
         this.date = LocalDate.parse(date, formatter);
         this.status = status;
     }
 
-    /*
+    /**
      * @return The task title
      */
     public String getTitle() {
         return this.title;
     }
 
-    /*
+    /**
      * @return The task Project
      */
     public String getProject() {
         return project;
     }
 
-    /*
+    /**
      * @return The task status
      */
     public String getStatus() {
         return status;
     }
 
-    /*
+    /**
      * @return The task Date
      */
     public LocalDate getTaskDate() {
         return date;
     }
 
-    /*
-     * @set the task title
+    /**
+     * This method changes the existing title of a
+     * task to the new input title
+     *
+     * @param setTaskTitle
+     * @set the task title to new title
      */
     public void setTaskTitle(String setTaskTitle) {
         title = setTaskTitle;
     }
 
-    /*
+    /**
+     * This method changes the existing status of a
+     * task to the new input status
+     *
+     * @param newStatus
      * @set the task status to done
      */
     public void setTaskStatusDone(String newStatus) {
         status = newStatus;
     }
 
-    /*
-     * @set the task project grouping
+    /**
+     * This method changes the existing project of a
+     * task to the new input project
+     *
+     * @param newProjectGrouping
+     * @set the task project to new project
      */
-    public void setProjectName(String setProjectGrouping) {
-        project = setProjectGrouping;
+    public void setProjectName(String newProjectGrouping) {
+        project = newProjectGrouping;
     }
 
-    /*
-     * @set the task date
+    /**
+     * This method changes the existing date of a
+     * task to the new input date
+     *
+     * @param setTaskDate
+     * @set the task date to new date
      */
     public void setTaskDate(String setTaskDate) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         this.date = LocalDate.parse(setTaskDate, formatter);
     }
+}
+
+ /*   /**
+     * @return a string based on the
 
     @Override
     public String toString() {
@@ -102,3 +123,4 @@ public class Task implements Serializable {
                 '}';
     }
 }
+*/

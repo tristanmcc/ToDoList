@@ -1,7 +1,6 @@
 package ToDoLy;
 
 import java.io.Serializable;
-import java.text.ParseException;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -21,8 +20,7 @@ import java.util.Scanner;
 public class ToDoList implements Serializable {
 
     //instance variables
-    private ArrayList<Task> arrayListToDoList = new ArrayList<Task>(); //storage of tasks
-    private int count = 0; //how many tasks have been added to TODO
+    private ArrayList<Task> arrayListToDoList; //storage of tasks
     private int statusOpen = 0;
     private int statusClosed = 0;
 
@@ -35,13 +33,12 @@ public class ToDoList implements Serializable {
     }
 
     /**
-     * Adds the task to this ToDoLy.ToDoList.
+     * Adds the task to this 'working' ArrayList ToDoLy.ToDoList.
      *
      * @param title, project, date, status
      */
     public void addTask(String title, String project, String date, String status) {
         arrayListToDoList.add(new Task(title, project, date, status));
-        count++;
     }
 
     /**
@@ -51,7 +48,6 @@ public class ToDoList implements Serializable {
      */
     public void remove(int index) {
         arrayListToDoList.remove(index);
-        count--;
 
     }
 
@@ -72,21 +68,16 @@ public class ToDoList implements Serializable {
                 break;
         }
         String format1 = "%-9s %-40s %-43s %-12s %-15s";
-        System.out.printf((format1) + "%n", "ToDoLy.Task No", "ToDoLy.Task Name", "ProjectName", "Status", " Date");
+        System.out.printf((format1) + "%n", "Task No", "Task Name", "ProjectName", "Status", " Date");
 
 
         for (Task task : arrayListToDoList) {
             count++;
             System.out.printf((format1) + "%n", count, task.getTitle(), task.getProject(), task.getStatus(), formatterAdd.format(task.getTaskDate()));
             String changeCase = task.getStatus().toUpperCase();
-
-
-            if (changeCase.equals("OPEN")) {
-                statusOpen = statusOpen + 1;
-            } else if (changeCase.equals("DONE")) {
-                statusClosed = statusClosed + 1;
-            }
         }
+        statusOpen = checkOutstanding();
+        statusClosed = checkClosedTasks();
         System.out.println("Number of Tasks open : " + statusOpen + " Number of Tasks Closed " + statusClosed);
         statusOpen = 0;
         statusClosed = 0;
@@ -111,26 +102,33 @@ public class ToDoList implements Serializable {
         return list;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (Task task : arrayListToDoList) {
-            sb.append(task.toString());
-
-        }
-        return sb.toString();
-    }
-
-
     public void update() {
         StreamManager streamManager = new StreamManager();
         streamManager.writeAsObject(arrayListToDoList);
-
     }
 
-    public static void main(String[] args) {
 
-
+    public int checkOutstanding() {
+        statusOpen = 0;
+        for (Task task : arrayListToDoList) {
+            String changeCase = task.getStatus().toUpperCase();
+            if (changeCase.equals("OPEN"))
+                statusOpen = statusOpen + 1;
+        } return statusOpen;
     }
-}
+
+    public int checkClosedTasks() {
+        statusClosed = 0;
+        for (Task task : arrayListToDoList) {
+            String changeCase = task.getStatus().toUpperCase();
+            if (changeCase.equals("DONE"))
+                statusClosed = statusClosed + 1;
+        } return statusClosed;
+    }
+        public static void main (String[]args){
+
+
+        }
+    }
+
 
