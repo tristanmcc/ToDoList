@@ -4,11 +4,11 @@
 
 -   About the Project
     -   Built With
-   
 -   UML Diagrams
-
--   [License](https://github.com/othneildrew/Best-README-Template#license)
--   [Contact](https://github.com/othneildrew/Best-README-Template#contact)
+-  Logo
+-  User Manual
+-  License
+-   Contact
 -   Acknowledgements
 
 # About the Project
@@ -23,7 +23,7 @@ ToDoLy is a simple text based to-do list application. The user is able to add, e
 -  tears
 
 
-# UML diagrams
+## UML diagrams
 
 - [Use Case Diagram](https://github.com/tristanmcc/ToDoList/blob/master/Diagrams/USE_CASE_DIAGRAM_TODO-Use_Case_diagram.jpg)
 - [Class Diagram](https://github.com/tristanmcc/ToDoList/blob/master/Diagrams/USE_CASE_DIAGRAM_TODO-Task%20Diagram.jpg)
@@ -54,6 +54,6 @@ tristanmccarthy085@gmail.com
 I would like to thank StackOverflow, Youtube, the World of Zuul project from *Objects first with Java* and Fred.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEwOTE0Nzk2OCwtMTczMzI1ODczNCw0Mz
-U4NDY2OF19
+eyJoaXN0b3J5IjpbNzE1MDYyODE2LC0xNzMzMjU4NzM0LDQzNT
+g0NjY4XX0=
 -->
