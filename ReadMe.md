@@ -13,13 +13,13 @@ ToDoLy is a simple text based to-do list application. The user is able to add, e
 
 -   IntelliJ IDEA 2020.2.2
 -   Java 11.0.8
--   .Txt file for storing and retrieving data.
+-   .txt file for storing and retrieving data.
 
 ## Application Logo
 
 <img src="https://img.icons8.com/ios/50/000000/todo-list.png"/>
 
-I know its a little boring (and small) but it was the only logo I could find for free...
+I know its a little boring (and a little small) but it was the only logo I could find for free...
 
 ## User Manual
 
@@ -34,13 +34,10 @@ If youre a very junior programmer like I am as I finish this, and would like to 
 tristanmccarthy085@gmail.com 
 
 
-
-
-
 ## Resources and Acknowledgements
 
 I would like to thank StackOverflow, Youtube, the World of Zuul project from *Objects first with Java* and Fred.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI3NjkzNDUxOSw0MzU4NDY2OF19
+eyJoaXN0b3J5IjpbLTE3MzMyNTg3MzQsNDM1ODQ2NjhdfQ==
 -->
