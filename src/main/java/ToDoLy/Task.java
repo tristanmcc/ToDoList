@@ -1,6 +1,5 @@
 package ToDoLy;
 
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -68,8 +67,7 @@ public class Task implements Serializable {
      * This method changes the existing title of a
      * task to the new input title
      *
-     * @param setTaskTitle
-     * @set the task title to new title
+     * @param setTaskTitle sets the task title to new title
      */
     public void setTaskTitle(String setTaskTitle) {
         title = setTaskTitle;
@@ -79,8 +77,7 @@ public class Task implements Serializable {
      * This method changes the existing status of a
      * task to the new input status
      *
-     * @param newStatus
-     * @set the task status to done
+     * @param newStatus sets the task status to done
      */
     public void setTaskStatusDone(String newStatus) {
         status = newStatus;
@@ -90,8 +87,7 @@ public class Task implements Serializable {
      * This method changes the existing project of a
      * task to the new input project
      *
-     * @param newProjectGrouping
-     * @set the task project to new project
+     * @param newProjectGrouping sets the task project to new project
      */
     public void setProjectName(String newProjectGrouping) {
         project = newProjectGrouping;
@@ -101,26 +97,10 @@ public class Task implements Serializable {
      * This method changes the existing date of a
      * task to the new input date
      *
-     * @param setTaskDate
-     * @set the task date to new date
+     * @param setTaskDate sets the task date to new date
      */
     public void setTaskDate(String setTaskDate) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         this.date = LocalDate.parse(setTaskDate, formatter);
     }
 }
-
- /*   /**
-     * @return a string based on the
-
-    @Override
-    public String toString() {
-        return
-                "title='" + title + '\'' +
-                ", status='" + status + '\'' +
-                ", date=" + date +
-                ", project='" + project + '\'' +
-                '}';
-    }
-}
-*/

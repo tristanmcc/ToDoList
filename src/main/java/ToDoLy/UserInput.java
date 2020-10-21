@@ -1,16 +1,13 @@
 package ToDoLy;
 
-import java.io.IOException;
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.*;
+import java.util.Scanner;
+
 /**
  * This class is part of the ToDoly to-do list application.
  * ToDoly is a very simple to-do list application.
- *
+ * <p>
  * The ToDoLy.UserInput class handles the users inputting of information regarding
  * Tasks to be added to the actual todo List
  * the To Do list that a user populates with Tasks
@@ -19,41 +16,39 @@ import java.util.*;
  * @Tristan_McCarthy
  */
 
-public class UserInput<streamManager> implements Serializable {
+public class UserInput implements Serializable {
 
-    private int choice;
     ToDoList simpleTodoList;
-    private int statusOpen;
-    private int statusClosed;
-    private String userStringDate;
-    DateFormat formatterAdd = new SimpleDateFormat("yyyy-MM-dd");//date formatter for Add method
-    DateFormat formatterEdit = new SimpleDateFormat("yyyy-MM-dd");//date formatter for Edit method
     private Scanner intScan = new Scanner(System.in);
     private Scanner normalScan = new Scanner(System.in);
     private boolean setQuit = false;
-    StreamManager streamManager;
-
 
 
     public UserInput() {
 
-        int choice = 0;
         simpleTodoList = new ToDoList();
-        StreamManager streamManager = new StreamManager();
+        new StreamManager();
     }
 
-    public void displayMenu() throws ParseException, IOException {
-        int choice = 1;
+    /**
+     * This method displays the primary menu interface that the user engages with.
+     * It offers the user action options including: add, edit, remove, display and save/quit.
+     * The method keeps track of how many outstanding tasks there are and how many are yet to be done.
+     * The method continue to loop until setQuit is true thus terminating the program.
+     */
+    public void displayMenu() {
+        int choice;
         //ToDoList simpleTodoList = new ToDoList();
-        Scanner input = new Scanner(System.in);
+        new Scanner(System.in);
+        System.out.println("This is ToDoLy");
+        System.out.println("your favourite To-do list application");
         while (!setQuit) {
 
-            //print start menu
-            statusOpen = simpleTodoList.checkOutstanding();
-            statusClosed = simpleTodoList.checkClosedTasks();
+
+            int statusOpen = simpleTodoList.checkOutstanding();
+            int statusClosed = simpleTodoList.checkClosedTasks();
             System.out.println();
-            System.out.println("This is ToDoLy");
-            System.out.println("your favourite To-do list application");
+            //print menu
             System.out.println("You have " + statusOpen + " tasks to do and " + statusClosed + " tasks are done");
             System.out.println("pick an option: ");
             System.out.println("1) Add a Task");
@@ -105,42 +100,31 @@ public class UserInput<streamManager> implements Serializable {
 
     /**
      * This method scans the users choice of action by determining the number they input
+     *
      * @return num of action chosen by user
      */
     public int scanInput() {
         Scanner sc = new Scanner(System.in);
-        int numInput = sc.nextInt();
-        //sc.close();
-        return numInput;
+        return sc.nextInt();
     }
 
-    /**
-     * This method will be used instead of repeated scanner.nextLine(); so it
-     * reads the input FileReader
-     */
-    public String scanString() {
-        Scanner sc = new Scanner(System.in);
-        String line = sc.nextLine();
-        sc.close();
-        return line;
-    }
     /**
      * This method adds a ToDoLy.Task to the ToDoLy.ToDoList variable by calling the addTask method
      * in the ToDoLy.ToDoList class and adding the task information input by the user
      */
     public void add() {
 
-        DateFormat formatterAdd = new SimpleDateFormat("yyyy-MM-dd");//date formatter
+        new SimpleDateFormat("yyyy-MM-dd");
         //Scanner scanning = new Scanner(System.in);
         System.out.println("Enter title: ");
         String title = normalScan.nextLine();//scanning.nextLine();
         System.out.println("Enter project: ");
-        String project =  normalScan.nextLine();//scanning.nextLine();
+        String project = normalScan.nextLine();//scanning.nextLine();
         System.out.println("Enter due date (format: yyyy-mm-dd): ");
-        String date =  normalScan.nextLine();//scanning.nextLine();
+        String date = normalScan.nextLine();//scanning.nextLine();
         System.out.println("Enter task Status: ");
-        String status =  normalScan.nextLine();// scanning.nextLine();
-        simpleTodoList.addTask(title,project,date,status);
+        String status = normalScan.nextLine();// scanning.nextLine();
+        simpleTodoList.addTask(title, project, date, status);
 
     }
 
@@ -150,12 +134,11 @@ public class UserInput<streamManager> implements Serializable {
      * the method calls the displayToDoList() method so that the user can the task number for the task
      * they want to edit.
      */
-
     public void editTask() {
         int taskNum = 0; //functions as index of tasks in simpletodolist
-        int editFieldChoice = 0; //functions as index of options for fields to edit
+        int editFieldChoice; //functions as index of options for fields to edit
         Task taskForEdit = this.simpleTodoList.getTask(taskNum); //task in 'todolist' accessed via get method based on task number chosen by user
-        DateFormat formatterEdit = new SimpleDateFormat("yyyy-MM-dd"); //date formatter
+        new SimpleDateFormat("yyyy-MM-dd");
 
 
         simpleTodoList.displayToDoList();
@@ -170,34 +153,34 @@ public class UserInput<streamManager> implements Serializable {
         System.out.println("4.Date");
         editFieldChoice = scanInput();
 
-        switch (editFieldChoice){
+        switch (editFieldChoice) {
             case 1: //Change the task title
 
-            System.out.println("Set task title to : " );
-            String newTitle = scanning.nextLine();
-            taskForEdit.setTaskTitle(newTitle);
-            break;
+                System.out.println("Set task title to : ");
+                String newTitle = scanning.nextLine();
+                taskForEdit.setTaskTitle(newTitle);
+                break;
 
             case 2: //Change the tasks 'Project' assignment
 
-            System.out.println("Edit the Project Name : ");
-            String newProjectName = scanning.nextLine();
-            taskForEdit.setProjectName(newProjectName);
-            break;
+                System.out.println("Edit the Project Name : ");
+                String newProjectName = scanning.nextLine();
+                taskForEdit.setProjectName(newProjectName);
+                break;
 
             case 3: //Change the tasks 'Status' assignment
 
-            System.out.println("Edit the status : ");
-            String newStatus = scanning.nextLine();
-            taskForEdit.setTaskStatusDone(newStatus);
-            break;
+                System.out.println("Edit the status : ");
+                String newStatus = scanning.nextLine();
+                taskForEdit.setTaskStatusDone(newStatus);
+                break;
 
             case 4: //Change the tasks 'Date' assignment
 
-            System.out.println("Edit the TaskDate(yyyy-MM-dd) : ");
-            userStringDate = scanning.nextLine();
+                System.out.println("Edit the TaskDate(yyyy-MM-dd) : ");
+                String userStringDate = scanning.nextLine();
                 taskForEdit.setTaskDate(userStringDate);
-            break;
+                break;
         }
     }
 
@@ -208,21 +191,24 @@ public class UserInput<streamManager> implements Serializable {
      */
     public void removeAnyTask() {
         {
-            int taskNum = 0;
-            int removeChoice = 0;
+            int taskNum;
             simpleTodoList.displayToDoList();
             System.out.println("Enter the Task no. you want  to delete ");
             taskNum = scanInput();
             taskNum = taskNum - 1;
-            Task taskForRemoving = simpleTodoList.getTask(taskNum);
+            simpleTodoList.getTask(taskNum);
             simpleTodoList.remove(taskNum);
 
 
         }
     }
 
-    private void saveExitTask()
-    {
+    /**
+     * This method initiates the closing of the program by ending the loop in the displayMenu() method
+     * when setQuit is set to true. The method also begins the process of saving the task list by
+     * calling update on an instance of ToDoList
+     */
+    private void saveExitTask() {
         simpleTodoList.update();
         setQuit = true;
     }
