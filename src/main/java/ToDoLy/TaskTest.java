@@ -37,8 +37,4 @@ class TaskTest {
     @Test
     void setTaskDate() {
     }
-
-    @Test
-    void testToString() {
-    }
 }
