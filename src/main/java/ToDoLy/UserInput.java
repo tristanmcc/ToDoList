@@ -100,7 +100,6 @@ public class UserInput implements Serializable {
 
     /**
      * This method scans the users choice of action by determining the number they input
-     *
      * @return num of action chosen by user
      */
     public int scanInput() {
