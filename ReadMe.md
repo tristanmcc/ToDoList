@@ -33,7 +33,7 @@
 <img src="https://img.icons8.com/ios/50/000000/todo-list.png">
 <p>I know its a little boring (and a little small) but it was the only logo I could find for free…</p>
 <h2 id="user-manual">User Manual</h2>
-<p>You’re likely a manual user, so you might this user manual: 
+<p>You’re likely a manual user, so you might need this user manual: 
 
 ToDoLy User Manual
 
@@ -76,6 +76,6 @@ I hope you enjoy using ToDoLy
 <p>I would like to thank StackOverflow, Youtube, the World of Zuul project from <em>Objects first with Java</em> and Fred.</p>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODExNjM2OTUsMjM0NTUyMzg1LC01OTU2OD
-c3OTMsMTQ1MDkxMjk3OV19
+eyJoaXN0b3J5IjpbMTIxOTAwMjYyMSw4MTE2MzY5NSwyMzQ1NT
+IzODUsLTU5NTY4Nzc5MywxNDUwOTEyOTc5XX0=
 -->
