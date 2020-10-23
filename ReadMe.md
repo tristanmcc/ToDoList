@@ -15,7 +15,7 @@
 <li>Acknowledgements</li>
 </ul>
 <h1 id="about-the-project">About the Project</h1>
-<p>ToDoLy is a simple text based to-do list application. The user is able to add, edit, display, remove and save tasks all from the comfort of their terminal. When <em><strong>adding</strong></em> a task one is able to set the task title, the project it belongs to, its due date and status (open or done) and these fields maybe be adjusted after the intial creation of the task, <em><strong>editing ;)</strong></em> . When one wants to see the entirety of their to-do list all they need do is display their tasks using the aforefentioned <em><strong>display function</strong></em>! The tasks may be stylishly displayed according to their project handles or due dates for your viewing pleasure. The application implements a task number system so to edit and <em><strong>remove</strong></em>  one needs to know the number of the task they want to mamnipulate. How, one might ask, is the user supposed to know this number? Have no fear, as when ever one edits or removes, the tasks are displayed for the users perusal of the relevant task numbers. When the user is done using the application, all they need to do to make sure all they’re important tasks are still there the next time, is <strong>save</strong> and <strong>quit</strong>, now conventiently located within one single action!</p>
+<p>ToDoLy is a simple text based to-do list application. The user is able to add, edit, display, remove and save tasks all from the comfort of their terminal. When <em><strong>adding</strong></em> a task one is able to set the task title, the project it belongs to, its due date and status (open or done) and these fields maybe be adjusted after the intial creation of the task, <em><strong>editing </strong></em> . When one wants to see the entirety of their to-do list all they need do is display their tasks using the aforefentioned <em><strong>display function</strong></em>! The tasks may be stylishly displayed according to their project handles or due dates for your viewing pleasure. The application implements a task number system so to edit and <em><strong>remove</strong></em>  one needs to know the number of the task they want to mamnipulate. How, one might ask, is the user supposed to know this number? Have no fear, as when ever one edits or removes, the tasks are displayed for the users perusal of the relevant task numbers. When the user is done using the application, all they need to do to make sure all they’re important tasks are still there the next time, is <strong>save</strong> and <strong>quit</strong>, now conventiently located within one single action!</p>
 <h2 id="built-with">Built with</h2>
 <ul>
 <li>IntelliJ IDEA 2020.2.2</li>
@@ -45,5 +45,6 @@
 <p>I would like to thank StackOverflow, Youtube, the World of Zuul project from <em>Objects first with Java</em> and Fred.</p>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU5NTY4Nzc5MywxNDUwOTEyOTc5XX0=
+eyJoaXN0b3J5IjpbMjM0NTUyMzg1LC01OTU2ODc3OTMsMTQ1MD
+kxMjk3OV19
 -->
