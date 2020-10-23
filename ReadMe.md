@@ -33,18 +33,49 @@
 <img src="https://img.icons8.com/ios/50/000000/todo-list.png">
 <p>I know its a little boring (and a little small) but it was the only logo I could find for free…</p>
 <h2 id="user-manual">User Manual</h2>
-<p>You’re likely a manual user, so you might this user manual</p>
+<p>You’re likely a manual user, so you might this user manual: 
+
+ToDoLy User Manual
+
+This is a guide on how to use ToDoLy, your favourite, simple to do list application for managing all those pesky tasks.
+
+All commands should be entered as numbers in connection to the number they hold in the menu.
+
+The menu will look like this:
+
+1) Add a Task
+
+2) Edit a Task
+
+3) Show Task List
+
+4) Remove a Task
+
+5) Save and Quit
+
+  
+
+And so,
+
+1.  If you ever want to add a task, simply enter 1.
+2.  If you want to edit an already-existing task, type 2.
+3.  If you want to display your to-do list, type 3.
+4.  If you want to remove a task, type 4.
+5.  If you want to save and quit, type 5.
+
+I hope you enjoy using ToDoLy
+(also available in project folder)</p>
 <h2 id="licence">Licence:</h2>
 <ul>
 <li>Open source</li>
 </ul>
 <h2 id="contact">Contact</h2>
-<p>If youre a very junior programmer like I am as I finish this, and would like to chat about how to do this yourself, email me.<br>
+<p>If you're a very junior programmer like I am as I finish this, and would like to chat about how to do this yourself, email me.<br>
 <a href="mailto:tristanmccarthy085@gmail.com">tristanmccarthy085@gmail.com</a></p>
 <h2 id="resources-and-acknowledgements">Resources and Acknowledgements</h2>
 <p>I would like to thank StackOverflow, Youtube, the World of Zuul project from <em>Objects first with Java</em> and Fred.</p>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjM0NTUyMzg1LC01OTU2ODc3OTMsMTQ1MD
-kxMjk3OV19
+eyJoaXN0b3J5IjpbODExNjM2OTUsMjM0NTUyMzg1LC01OTU2OD
+c3OTMsMTQ1MDkxMjk3OV19
 -->
