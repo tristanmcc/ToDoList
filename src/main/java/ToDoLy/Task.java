@@ -1,8 +1,10 @@
 package ToDoLy;
 
 import java.io.Serializable;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 /**
  * This class is part of the ToDoly to-do list application.
@@ -28,10 +30,21 @@ public class Task implements Serializable {
      */
     public Task(String title, String project, String date, String status) {
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        if (date.trim().isEmpty()) {
+            throw new IllegalStateException("You have to enter a date!");
+        }
+        try {
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            this.date = LocalDate.parse(date, formatter);
+        } catch (DateTimeParseException e) {
+            System.out.println("The format of the date is invalid, please try again.\n");
+        } if (this.date.compareTo(LocalDate.now()) < 0) {
+                throw new DateTimeException("The time you entered has passed, please try again.\n");
+            }
+
         this.title = title;
         this.project = project;
-        this.date = LocalDate.parse(date, formatter);
         this.status = status;
     }
 
@@ -100,7 +113,20 @@ public class Task implements Serializable {
      * @param setTaskDate sets the task date to new date
      */
     public void setTaskDate(String setTaskDate) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        this.date = LocalDate.parse(setTaskDate, formatter);
+        if (setTaskDate.trim().isEmpty()) {
+            throw new IllegalStateException("You have to enter a date!");
+        }
+        try {
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            this.date = LocalDate.parse(setTaskDate, formatter);
+        } catch (DateTimeParseException e) {
+            System.out.println("The format of the date is invalid, please try again.\n");
+        }
+        // check if date has passed the current time
+        if (date.compareTo(LocalDate.now()) < 0) {
+            throw new DateTimeException("The time you entered has passed, please try again.\n");
+        }
+
     }
 }
