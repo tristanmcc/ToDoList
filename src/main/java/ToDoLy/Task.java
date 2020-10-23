@@ -26,7 +26,9 @@ public class Task implements Serializable {
 
 
     /**
-     * This is the constructor which builds a ToDoLy.Task.
+     * This is the constructor which builds a ToDoLy.Task. It also checks that the date of the
+     * task created is not earlier than today. If it is,
+     * it prompts the user to add the task again with an appropriate future date
      */
     public Task(String title, String project, String date, String status) {
 
@@ -39,9 +41,10 @@ public class Task implements Serializable {
             this.date = LocalDate.parse(date, formatter);
         } catch (DateTimeParseException e) {
             System.out.println("The format of the date is invalid, please try again.\n");
-        } if (this.date.compareTo(LocalDate.now()) < 0) {
-                throw new DateTimeException("The time you entered has passed, please try again.\n");
-            }
+        }
+        if (this.date.compareTo(LocalDate.now()) < 0) {
+            throw new DateTimeException("The time you entered has passed, please try again.\n");
+        }
 
         this.title = title;
         this.project = project;
@@ -108,7 +111,9 @@ public class Task implements Serializable {
 
     /**
      * This method changes the existing date of a
-     * task to the new input date
+     * task to the new input date. It also checks that the date of the
+     * is not earlier than today. If it is,
+     * it prompts the user to add the task again with an appropriate future date
      *
      * @param setTaskDate sets the task date to new date
      */

@@ -61,48 +61,48 @@ public class UserInput implements Serializable {
 
 
             System.out.println("Please input your desired action then click enter: ");
-                    //Scan user's input
-                    choice = intScan.nextInt();
+            //Scan user's input
+            choice = intScan.nextInt();
 
 
-                    switch (choice) {
-                        case 1:  //ADD a ToDoLy.Task to ArrayList
-                            add();
-                            break;
+            switch (choice) {
+                case 1:  //ADD a ToDoLy.Task to ArrayList
+                    add();
+                    break;
 
-                        case 2:  //remove last in ArrayList
-                            editTask();
-                            break;
+                case 2:  //remove last in ArrayList
+                    editTask();
+                    break;
 
-                        case 3:  //Display all tasks in ArrayList
-                            simpleTodoList.displayToDoList();
-                            break;
+                case 3:  //Display all tasks in ArrayList
+                    simpleTodoList.displayToDoList();
+                    break;
 
-                        case 4:  //remove any task in ArrayList
-                            removeAnyTask();
-                            break;
+                case 4:  //remove any task in ArrayList
+                    removeAnyTask();
+                    break;
 
-                        case 5:
-                            saveExitTask();
-                            System.out.println("Goodbye!");
-                            setQuit = true;
-                            break;
+                case 5:
+                    saveExitTask();
+                    System.out.println("Goodbye!");
+                    setQuit = true;
+                    break;
 
-                        default:
-                            System.out.println("Sorry, but " + choice + " is not one of " +
-                                    "the menu choices. Please try again.");
-                            break;
-
-                    }
+                default:
+                    System.out.println("Sorry, but " + choice + " is not one of " +
+                            "the menu choices. Please try again.");
+                    break;
 
             }
 
         }
 
+    }
 
 
     /**
      * This method scans the users choice of action by determining the number they input
+     *
      * @return num of action chosen by user
      */
     public int scanInput() {
@@ -197,7 +197,8 @@ public class UserInput implements Serializable {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
                 continue;
-            } break;
+            }
+            break;
         }
     }
 
