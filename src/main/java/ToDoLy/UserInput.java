@@ -60,7 +60,7 @@ public class UserInput implements Serializable {
             System.out.println();
 
 
-            System.out.println("Please input your desired action then double click enter: ");
+            System.out.println("Please input your desired action then click enter: ");
                     //Scan user's input
                     choice = intScan.nextInt();
 
