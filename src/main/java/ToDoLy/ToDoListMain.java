@@ -13,9 +13,6 @@ public class ToDoListMain implements Serializable {
 }
 
 
-// ToDO: - Contains a short user manual
-// ToDO: - Class Diagram out of date
-
 // ToDO: - Pull Requests
 
 

@@ -42,8 +42,9 @@ public class UserInput implements Serializable {
         new Scanner(System.in);
         System.out.println("This is ToDoLy");
         System.out.println("your favourite To-do list application");
-        while (!setQuit) {
 
+
+        while (!setQuit) {
 
             int statusOpen = simpleTodoList.checkOutstanding();
             int statusClosed = simpleTodoList.checkClosedTasks();
@@ -58,45 +59,47 @@ public class UserInput implements Serializable {
             System.out.println("5) Save and Quit");
             System.out.println();
 
+
             System.out.println("Please input your desired action then double click enter: ");
+                    //Scan user's input
+                    choice = intScan.nextInt();
 
 
-            //Scan user's input
-            choice = intScan.nextInt();//scanInput();
-            //input.nextLine();  //clear input stream
+                    switch (choice) {
+                        case 1:  //ADD a ToDoLy.Task to ArrayList
+                            add();
+                            break;
 
+                        case 2:  //remove last in ArrayList
+                            editTask();
+                            break;
 
-            switch (choice) {
-                case 1:  //ADD a ToDoLy.Task to ArrayList
-                    add();
-                    break;
+                        case 3:  //Display all tasks in ArrayList
+                            simpleTodoList.displayToDoList();
+                            break;
 
-                case 2:  //remove last in ArrayList
-                    editTask();
-                    break;
+                        case 4:  //remove any task in ArrayList
+                            removeAnyTask();
+                            break;
 
-                case 3:  //Display all tasks in ArrayList
-                    simpleTodoList.displayToDoList();
-                    break;
+                        case 5:
+                            saveExitTask();
+                            System.out.println("Goodbye!");
+                            setQuit = true;
+                            break;
 
-                case 4:  //remove any task in ArrayList
-                    removeAnyTask();
-                    break;
+                        default:
+                            System.out.println("Sorry, but " + choice + " is not one of " +
+                                    "the menu choices. Please try again.");
+                            break;
 
-                case 5:
-                    saveExitTask();
-                    System.out.println("Goodbye!");
-                    setQuit = true;
-                    break;
-
-                default:
-                    System.out.println("Sorry, but " + choice + " is not one of " +
-                            "the menu choices. Please try again.");
-                    break;
+                    }
 
             }
+
         }
-    }
+
+
 
     /**
      * This method scans the users choice of action by determining the number they input
@@ -115,16 +118,23 @@ public class UserInput implements Serializable {
 
         new SimpleDateFormat("yyyy-MM-dd");
         //Scanner scanning = new Scanner(System.in);
-        System.out.println("Enter title: ");
-        String title = normalScan.nextLine();//scanning.nextLine();
-        System.out.println("Enter project: ");
-        String project = normalScan.nextLine();//scanning.nextLine();
-        System.out.println("Enter due date (format: yyyy-mm-dd): ");
-        String date = normalScan.nextLine();//scanning.nextLine();
-        System.out.println("Enter task Status: ");
-        String status = normalScan.nextLine();// scanning.nextLine();
-        simpleTodoList.addTask(title, project, date, status);
-
+        while (true) {
+            try {
+                System.out.println("Enter title: ");
+                String title = normalScan.nextLine();//scanning.nextLine();
+                System.out.println("Enter project: ");
+                String project = normalScan.nextLine();//scanning.nextLine();
+                System.out.println("Enter due date (format: yyyy-mm-dd): ");
+                String date = normalScan.nextLine();//scanning.nextLine();
+                System.out.println("Enter task Status (Open or Done): ");
+                String status = normalScan.nextLine();// scanning.nextLine();
+                simpleTodoList.addTask(title, project, date, status);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                continue;
+            }
+            break;
+        }
     }
 
 
@@ -151,37 +161,46 @@ public class UserInput implements Serializable {
         System.out.println("3.Status ");
         System.out.println("4.Date");
         editFieldChoice = scanInput();
+        while (true) {
+            try {
 
-        switch (editFieldChoice) {
-            case 1: //Change the task title
+                switch (editFieldChoice) {
+                    case 1: //Change the task title
 
-                System.out.println("Set task title to : ");
-                String newTitle = scanning.nextLine();
-                taskForEdit.setTaskTitle(newTitle);
-                break;
+                        System.out.println("Set task title to : ");
+                        String newTitle = scanning.nextLine();
+                        taskForEdit.setTaskTitle(newTitle);
+                        break;
 
-            case 2: //Change the tasks 'Project' assignment
+                    case 2: //Change the tasks 'Project' assignment
 
-                System.out.println("Edit the Project Name : ");
-                String newProjectName = scanning.nextLine();
-                taskForEdit.setProjectName(newProjectName);
-                break;
+                        System.out.println("Edit the Project Name : ");
+                        String newProjectName = scanning.nextLine();
+                        taskForEdit.setProjectName(newProjectName);
+                        break;
 
-            case 3: //Change the tasks 'Status' assignment
+                    case 3: //Change the tasks 'Status' assignment
 
-                System.out.println("Edit the status : ");
-                String newStatus = scanning.nextLine();
-                taskForEdit.setTaskStatusDone(newStatus);
-                break;
+                        System.out.println("Edit the status : ");
+                        String newStatus = scanning.nextLine();
+                        taskForEdit.setTaskStatusDone(newStatus);
+                        break;
 
-            case 4: //Change the tasks 'Date' assignment
+                    case 4: //Change the tasks 'Date' assignment
 
-                System.out.println("Edit the TaskDate(yyyy-MM-dd) : ");
-                String userStringDate = scanning.nextLine();
-                taskForEdit.setTaskDate(userStringDate);
-                break;
+                        System.out.println("Edit the TaskDate(yyyy-MM-dd) : ");
+                        String userStringDate = scanning.nextLine();
+                        taskForEdit.setTaskDate(userStringDate);
+                        break;
+                }
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                continue;
+            } break;
         }
     }
+
 
     /**
      * This method allows users to remove tasks that have already been added to the working ToDo List
@@ -211,6 +230,7 @@ public class UserInput implements Serializable {
         simpleTodoList.update();
         setQuit = true;
     }
+
 
     public static void main(String[] args) {
 
